@@ -38,5 +38,32 @@ Nossa aplicação utilizará os seguintes componentes:
 
 7. Publique seu classificador no HuggingFace
 
-  - Cuidado para não expor a chave OpenAI, ela nunca deve estar versionada!!!!
+  - **Cuidado para não expor a chave OpenAI, ela nunca deve estar versionada!!!!**
+
+## Atividades complementares
+
+1. Altere o prompt para retornar a justificativa da escolha da classificação
+
+```
+prompt = f"""
+Classifique o sentimento do seguinte texto como Positivo, Negativo ou Neutro:
+Texto: "{texto}"
+Responda apenas com uma das opções.
+Inclua ao final a justificativa da classificação escolhida.
+"""
+```
+2. Altere o prompt para retornar as respostas em formato JSON para serem tratadas em sua aplicação
+```
+prompt = f"""
+Classifique o sentimento do seguinte texto como Positivo, Negativo ou Neutro:
+Texto: "{texto}"
+Responda apenas com uma das opções.
+Inclua ao final a justificativa da classificação escolhida.
+Responda os itens em formato json como descrito abaixo:
+""" + "{ \"classificacao\": coloque aqui a classificação., \"justificativa\": coloque aqui a justificativa. }"
+```
+
+3. 
+
+
 
