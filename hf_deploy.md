@@ -22,3 +22,18 @@ git push
 Observações de segurança:
 - Nunca versionar `OPENAI_API_KEY` em repositórios públicos.
 - Para produção, considere limites e caching de previsões para reduzir custos.
+
+**Passo a passo rápido (checklist)**
+
+- **1.** Crie um Space no Hugging Face → escolha `Streamlit`.
+- **2.** No campo de importação escolha `Import from GitHub` e selecione o repositório `Robinhoalm/MetaClassificador` (ou clone o Space e copie os arquivos manualmente).
+- **3.** Confirme que a raiz do Space contém `streamlit_app.py` (este arquivo importa `classificador_streamlit.py` que é o entrypoint do app).
+- **4.** Em `Settings` → `Variables` do Space adicione a variável `OPENAI_API_KEY` com a chave **nova** da OpenAI (não use a chave que foi exposta anteriormente).
+- **5.** Faça o push do código para o repositório do Space (ou use a importação automática). O build do Space vai rodar automaticamente.
+- **6.** Acompanhe os logs de build e abra a URL do Space quando o status for `Running`.
+
+**Rotacionar chave (recomendado)**
+
+- A chave antiga foi removida do workspace local por segurança. Acesse https://platform.openai.com/account/api-keys e revogue/rotacione a chave exposta. Em seguida gere uma nova chave e use-a apenas como `OPENAI_API_KEY` no Secrets do Space.
+
+Se quiser, eu posso abrir novamente a página de criação do Space para você.
