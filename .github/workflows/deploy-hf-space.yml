@@ -1,0 +1,47 @@
+name: Deploy to Hugging Face Space
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    name: Deploy to HF Space
+    runs-on: ubuntu-latest
+    env:
+      HF_SPACE_REPO: ${{ secrets.HF_SPACE_REPO }}
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Deploy to Space
+        if: env.HF_SPACE_REPO != '' && env.HF_TOKEN != ''
+        run: |
+          set -euo pipefail
+          echo "Cloning Space repo: $HF_SPACE_REPO"
+          TMP_DIR=$(mktemp -d)
+          git clone "$HF_SPACE_REPO" "$TMP_DIR"
+          echo "Copying files into Space repo (excludes .git, data, results, .vscode)"
+          rsync -av --delete --exclude='.git' --exclude='.vscode' --exclude='data' --exclude='results' ./ "$TMP_DIR/"
+          cd "$TMP_DIR"
+          git add .
+          if git diff --staged --quiet; then
+            echo "No changes to deploy"
+            exit 0
+          fi
+          git commit -m "CI: deploy to Hugging Face Space"
+          # Push using token auth (token used only here)
+          push_url="https://${HF_TOKEN}@${HF_SPACE_REPO#https://}"
+          echo "Pushing to Space repo..."
+          git push "$push_url" main
+
+      - name: Skip deploy note
+        if: env.HF_SPACE_REPO == '' || env.HF_TOKEN == ''
+        run: |
+          echo "HF_SPACE_REPO or HF_TOKEN not set in repository secrets. Skipping deploy."

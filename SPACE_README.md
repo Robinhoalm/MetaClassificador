@@ -40,3 +40,10 @@ Dicas
 - Se usar pacotes extras, confirme `requirements.txt` está atualizado.
 
 Boa sorte! Se quiser, eu posso abrir a página de criação do Space para você agora.
+
+Repository secrets (optional CI deploy)
+- To enable automatic deploys from GitHub to your Hugging Face Space, add the following repository Secrets (Settings -> Secrets -> Actions):
+	- `HF_SPACE_REPO` = `https://huggingface.co/spaces/<your-user>/<your-space>`
+	- `HF_TOKEN` = (a Hugging Face write token)
+
+Once set, the GitHub Actions workflow `/.github/workflows/deploy-hf-space.yml` will push changes on `main` to the Space repository automatically.
