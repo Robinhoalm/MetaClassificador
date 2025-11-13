@@ -76,8 +76,46 @@ Texto: "{texto}"
 Responda apenas com uma das opções.
 Inclua ao final a justificativa da classificação escolhida.
 """
+## Dataset escolhido
+
+- Dataset sugerido para este exercício: `Twitter US Airline Sentiment` (disponível no Kaggle como `crowdflower/twitter-airline-sentiment`). Ele contém tweets rotulados como `positive`, `negative` ou `neutral`, adequado para testar um classificador de sentimento.
+
+## Como rodar localmente
+
+- Instale dependências:
+
+```bash
+pip install -r requirements.txt
+```
+
+- Crie um arquivo `.env` na raiz (NUNCA versionar) com:
+
+```
+OPENAI_API_KEY=sk-...
+```
+
+- Baixe o CSV do Kaggle (exemplo):
+
+```bash
 ```
 2. Altere o prompt para retornar as respostas em formato JSON para serem tratadas em sua aplicação
+```
+
+- Avaliar amostra com GPT-4.1-nano:
+
+```bash
+python kaggle_prepare_and_evaluate.py --csv data/airline_sentiment.csv --sample 200
+```
+
+- Rodar a interface Streamlit localmente:
+
+```bash
+streamlit run classificador_streamlit.py
+```
+
+## Publicar no Hugging Face
+- Veja `huggingface_publish.md` para passos rápidos e segurança das chaves.
+
 ```
 prompt = f"""
 Classifique o sentimento do seguinte texto como Positivo, Negativo ou Neutro:
