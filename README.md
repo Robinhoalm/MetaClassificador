@@ -44,6 +44,18 @@ Nossa aplicação utilizará os seguintes componentes:
 7. Publique seu classificador no HuggingFace
 
   - **Cuidado para não expor a chave OpenAI, ela nunca deve estar versionada!!!!**
+  - Acessar o https://huggingface.co/
+  - Criar um usuário (ou logar)
+  - Clicar botão "New" e escolhe as opção SPACE
+  - Preencha os campos "Space name" , "Description", "License" como GPL3
+  - Marque em "Select the Space SDK" a opção "Docker"
+  - Marque em "Choose a Docker template" a opção "streamlit"
+  - Deixar o Spacer como "Public"
+  - Clicar em "Create Space"
+  - Após o primeiro build, clicar em "Files"
+  - Sobrepor o arquivo "requeriments.txt" com o arquivo do seu projeto no GitHub (através do "uploado files" ou "edit")
+  - Na parta "src" editar o arquivo "streamlit_app.py" incluindo o fonte do seu programa streamlit do seu projeto no GitHub (através do "uploado files" ou "edit")
+  - Será necessário configurar a chave da OpenAI no secrets
 
 ## Atividades complementares
 
