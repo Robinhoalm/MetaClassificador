@@ -61,6 +61,7 @@ Nossa aplicação utilizará os seguintes componentes:
   - Atribuir o "name" como "OPENAI_API_KEY" e o "value" com o valor da chave da OpenAI
   - Clicar em "Save"
   - Clicar em "App" e testa a aplicação
+  - Link desse projeto é https://huggingface.co/spaces/rafaelcleversystems/MetaClassificadorSentimento
 
 ## Atividades complementares
 
