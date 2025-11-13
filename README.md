@@ -56,6 +56,11 @@ Nossa aplicação utilizará os seguintes componentes:
   - Sobrepor o arquivo "requeriments.txt" com o arquivo do seu projeto no GitHub (através do "uploado files" ou "edit")
   - Na parta "src" editar o arquivo "streamlit_app.py" incluindo o fonte do seu programa streamlit do seu projeto no GitHub (através do "uploado files" ou "edit")
   - Será necessário configurar a chave da OpenAI no secrets
+  - Clicar em Settings
+  - Clicar no botão "New Secrets"
+  - Atribuir o "name" como "OPENAI_API_KEY" e o "value" com o valor da chave da OpenAI
+  - Clicar em "Save"
+  - Clicar em "App" e testa a aplicação
 
 ## Atividades complementares
 
